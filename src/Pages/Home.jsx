@@ -1,8 +1,25 @@
+import { getTrendMovie } from 'components/Api';
+import { useEffect, useState } from 'react';
+import { FilmList } from 'components/FilmList';
+
 export const Home = () => {
+  const [movie, setMovie] = useState([]);
+  useEffect(() => {
+    const control = new AbortController();
+    async function getHotMovie() {
+      try {
+        const movieData = await getTrendMovie(control.signal);
+        setMovie([...movieData.results]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getHotMovie();
+  }, []);
   return (
     <div>
-      <p>img</p>
-      <h1>Film mame</h1>
+      <h1>The hottest for today🔥:</h1>
+      <ul>{movie.length > 0 && <FilmList movie={movie} />}</ul>
     </div>
   );
 };
