@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 export const FilmList = ({ movie, movQuery }) => {
-  let location = useLocation();
+  const location = useLocation();
   return (
     <>
       {movie.map(({ id, poster_path, original_title, name }) => {
