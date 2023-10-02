@@ -3,10 +3,10 @@ export const FilmList = ({ movie, movQuery }) => {
   let location = useLocation();
   return (
     <>
-      {movie.map(({ id, original_title, name, poster_path }) => {
+      {movie.map(({ id, poster_path, original_title, name }) => {
         return (
           <li key={id}>
-            <Link to={` /movies/${id} `} state={{ from: location, movQuery }}>
+            <Link to={`/movies/${id}`} state={{ from: location, movQuery }}>
               <img
                 width={300}
                 height={450}

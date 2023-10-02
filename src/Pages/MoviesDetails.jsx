@@ -7,6 +7,7 @@ export const MoviesDetails = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    if (!movieId) return console.log(no);
     async function getMovieInfo() {
       try {
         const moveData = await getMovieDetails(movieId);
