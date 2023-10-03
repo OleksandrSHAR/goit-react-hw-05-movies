@@ -22,7 +22,7 @@ export const getMovieDetails = async (movieId, signal) => {
   const resp = await axios.get(`/movie/${movieId}?api_key=${API_KEY} `, {
     signal,
   });
-  return resp.data;
+  return resp;
 };
 export const getMovieCredits = async (movieId, signal) => {
   const resp = await axios.get(

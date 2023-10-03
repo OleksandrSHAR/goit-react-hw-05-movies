@@ -8,17 +8,20 @@ export const MoviesDetails = () => {
 
   useEffect(() => {
     if (!movieId) return;
+
     async function getMovieInfo() {
       try {
-        const moveData = await getMovieDetails(movieId);
-        console.log(moveData);
-        setMovie(moveData);
+        const movieData = await getMovieDetails(movieId);
+
+        setMovie(movieData);
+        console.log(movieData);
       } catch (error) {
         console.log(error);
       }
     }
     getMovieInfo();
   }, [movieId]);
+  console.log(movie);
   return (
     <>
       {movie && (
