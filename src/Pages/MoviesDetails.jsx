@@ -14,14 +14,11 @@ export const MoviesDetails = () => {
         const movieData = await getMovieDetails(movieId);
 
         setMovie(movieData);
-        console.log(movieData);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
     getMovieInfo();
   }, [movieId]);
-  console.log(movie);
+
   return (
     <>
       {movie && (
@@ -30,6 +27,7 @@ export const MoviesDetails = () => {
             width={300}
             height={450}
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt="poster"
           />
           <h1>{movie.titel || movie.name}</h1>
           <div>
