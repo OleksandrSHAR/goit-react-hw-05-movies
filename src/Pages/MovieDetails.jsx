@@ -30,7 +30,7 @@ export const MovieDetails = () => {
     <>
       {movie && (
         <div>
-          <button to={backLink.current}>Beck</button>
+          <Link to={backLink.current}>Beck</Link>
           <img
             width={300}
             height={450}
