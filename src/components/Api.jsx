@@ -18,26 +18,26 @@ export const getSearchMovie = async (searcMovies, signal) => {
 
   return resp.data;
 };
-export const getMovieDetails = async (movieId, signal) => {
-  const resp = await axios.get(`/movie/${movieId}?api_key=${API_KEY} `, {
-    signal,
+export const getMovieDetails = async (movieId, controller) => {
+  const resp = await axios.get(`/movie/${movieId}?api_key=${API_KEY}`, {
+    signal: controller.current.signal,
   });
   return resp;
 };
-export const getMovieCredits = async (movieId, signal) => {
+export const getMovieCast = async (movieId, controller) => {
   const resp = await axios.get(
     `/movie/${movieId}/credits?api_key=${API_KEY} `,
     {
-      signal,
+      signal: controller.current.signal,
     }
   );
   return resp.data;
 };
-export const getMovieReviews = async (movieId, signal) => {
+export const getMovieReviews = async (movieId, controller) => {
   const resp = await axios.get(
     `/movie/${movieId}/reviews?api_key=${API_KEY} `,
     {
-      signal,
+      signal: controller.current.signal,
     }
   );
   return resp.data;

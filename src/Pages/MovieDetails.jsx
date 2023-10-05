@@ -1,20 +1,27 @@
 import { useEffect } from 'react';
-import { useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'components/Api';
-export const MoviesDetails = () => {
+export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-
+  const controller = useRef();
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/movies';
   useEffect(() => {
     if (!movieId) return;
-
+    if (controller.current) {
+      controller.current.abort();
+    }
     async function getMovieInfo() {
+      controller.current = new AbortController();
       try {
-        const movieData = await getMovieDetails(movieId);
+        const { data } = await getMovieDetails(movieId, controller);
 
-        setMovie(movieData);
-      } catch (error) {}
+        setMovie(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
     getMovieInfo();
   }, [movieId]);
@@ -23,13 +30,14 @@ export const MoviesDetails = () => {
     <>
       {movie && (
         <div>
+          <button to={backLink.current}>Beck</button>
           <img
             width={300}
             height={450}
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt="poster"
           />
-          <h1>{movie.titel || movie.name}</h1>
+          <h1>{movie.title || movie.name}</h1>
           <div>
             <p>User Score:</p>
             <p>{movie.vote_average}</p>
@@ -39,7 +47,9 @@ export const MoviesDetails = () => {
           <p>{movie.overview}</p>
 
           <h2>Genres</h2>
-          <p>{movie.genres}</p>
+          {movie.genres.map(({ id, name }) => (
+            <p key={id}>{name} </p>
+          ))}
         </div>
       )}
       <ul>
