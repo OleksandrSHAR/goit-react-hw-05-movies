@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getSearchMovie } from 'components/Api';
+import { getSearchMovie } from 'components/Api/Api';
 import { useSearchParams } from 'react-router-dom';
-import { FilmList } from 'components/FilmList';
+import { FilmList } from 'Pages/FilmList/FilmList';
 export const Movies = () => {
   const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
@@ -46,9 +46,7 @@ export const Movies = () => {
       </form>
 
       <div>
-        <ul>
-          {movies.length > 0 && <FilmList movie={movies} movQuery={movQuery} />}
-        </ul>
+        <ul>{movies.length > 0 && <FilmList movie={movies} />}</ul>
       </div>
     </div>
   );

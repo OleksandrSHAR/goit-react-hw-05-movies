@@ -1,6 +1,6 @@
-import { getTrendMovie } from 'components/Api';
+import { getTrendMovie } from 'components/Api/Api';
 import { useEffect, useState } from 'react';
-import { FilmList } from 'components/FilmList';
+import { FilmList } from 'Pages/FilmList/FilmList';
 
 export const Home = () => {
   const [movie, setMovie] = useState([]);

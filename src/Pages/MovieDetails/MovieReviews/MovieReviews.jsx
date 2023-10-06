@@ -1,4 +1,4 @@
-import { getMovieReviews } from 'components/Api';
+import { getMovieReviews } from 'components/Api/Api';
 import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -34,7 +34,7 @@ export const MovieReviews = () => {
             </li>
           ))
         ) : (
-          <p>no coments</p>
+          <p>There is no review of the movie😕</p>
         )}
       </ul>
     </>

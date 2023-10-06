@@ -1,4 +1,4 @@
-import { getMovieCast } from 'components/Api';
+import { getMovieCast } from 'components/Api/Api';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 

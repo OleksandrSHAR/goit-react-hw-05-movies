@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { getMovieDetails } from 'components/Api';
+import { getMovieDetails } from 'components/Api/Api';
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const controller = useRef();
   const location = useLocation();
   const backLink = location.state?.from ?? '/movies';
+  const defoltPoster =
+    'https://1.bp.blogspot.com/-B6PlJJwEsy8/VHhWIUnOShI/AAAAAAAABoM/La-gR8X-b2w/s1600/oacPJDv4TS4.jpg';
   useEffect(() => {
     if (!movieId) return;
     if (controller.current) {
@@ -28,13 +30,17 @@ export const MovieDetails = () => {
 
   return (
     <>
+      <Link to={backLink}>Beck</Link>
       {movie && (
         <div>
-          <Link to={backLink.current}>Beck</Link>
           <img
             width={300}
             height={450}
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                : defoltPoster
+            }
             alt="poster"
           />
           <h1>{movie.title || movie.name}</h1>
