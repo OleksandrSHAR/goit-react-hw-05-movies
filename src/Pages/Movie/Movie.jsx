@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getSearchMovie } from 'components/Api/Api';
 import { useSearchParams } from 'react-router-dom';
 import { FilmList } from 'Pages/FilmList/FilmList';
-export const Movies = () => {
+
+const Movies = () => {
   const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,3 +52,4 @@ export const Movies = () => {
     </div>
   );
 };
+export default Movies;

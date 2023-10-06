@@ -2,7 +2,7 @@ import { getTrendMovie } from 'components/Api/Api';
 import { useEffect, useState } from 'react';
 import { FilmList } from 'Pages/FilmList/FilmList';
 
-export const Home = () => {
+const Home = () => {
   const [movie, setMovie] = useState([]);
   useEffect(() => {
     const control = new AbortController();
@@ -23,3 +23,4 @@ export const Home = () => {
     </div>
   );
 };
+export default Home;

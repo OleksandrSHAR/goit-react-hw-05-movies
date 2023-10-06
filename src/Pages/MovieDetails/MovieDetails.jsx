@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'components/Api/Api';
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const controller = useRef();
@@ -70,3 +70,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;

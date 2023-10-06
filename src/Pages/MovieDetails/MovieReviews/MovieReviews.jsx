@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const MovieReviews = () => {
+const MovieReviews = () => {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
   const controller = useRef();
@@ -40,3 +40,4 @@ export const MovieReviews = () => {
     </>
   );
 };
+export default MovieReviews;
