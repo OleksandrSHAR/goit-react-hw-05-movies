@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 const Header = () => {
   return (
@@ -15,7 +16,9 @@ const Header = () => {
       </NavLink>
       <NavLink to={'/movies'}>MOVIES</NavLink>
       <div>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );

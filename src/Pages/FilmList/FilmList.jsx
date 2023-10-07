@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { FilmItem } from './FilmList.style';
 export const FilmList = ({ movie }) => {
   const location = useLocation();
   const defoltPoster =
@@ -7,7 +8,7 @@ export const FilmList = ({ movie }) => {
     <>
       {movie.map(({ id, poster_path, original_title, name }) => {
         return (
-          <li key={id}>
+          <FilmItem key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
               <img
                 width={300}
@@ -22,7 +23,7 @@ export const FilmList = ({ movie }) => {
 
               {original_title ? original_title : name}
             </Link>
-          </li>
+          </FilmItem>
         );
       })}
     </>
