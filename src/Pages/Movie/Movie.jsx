@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getSearchMovie } from 'components/Api/Api';
 import { useSearchParams } from 'react-router-dom';
 import { FilmList } from 'Pages/FilmList/FilmList';
-
+import { FilmWrap } from './Movie.style';
+import toast from 'react-hot-toast';
 const Movies = () => {
   const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
@@ -27,8 +28,10 @@ const Movies = () => {
   };
   const onSubmit = e => {
     e.preventDefault();
-    // if (e.target.elements.search.value === '')
-    // toast.error('The search field cannot be empty');
+    if (e.target.elements.search.value === '') {
+      toast.error('Enter the name of the movie');
+    }
+
     setSearchParams({ query: e.target.elements.search.value });
 
     console.log(e.target.elements.search.value);
@@ -47,7 +50,7 @@ const Movies = () => {
       </form>
 
       <div>
-        <ul>{movies.length > 0 && <FilmList movie={movies} />}</ul>
+        <FilmWrap>{movies.length > 0 && <FilmList movie={movies} />}</FilmWrap>
       </div>
     </div>
   );

@@ -20,8 +20,7 @@ export const FilmList = ({ movie }) => {
                 }
                 alt="poster"
               />
-
-              {original_title ? original_title : name}
+              <p>{original_title ? original_title : name}</p>
             </Link>
           </FilmItem>
         );
