@@ -7,7 +7,12 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const controller = useRef();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/movies';
+  const [backLink] = useState(
+    location?.state?.movQuery
+      ? `/movies?query=${location.state.movQuery}`
+      : null
+  );
+
   const defoltPoster =
     'https://1.bp.blogspot.com/-B6PlJJwEsy8/VHhWIUnOShI/AAAAAAAABoM/La-gR8X-b2w/s1600/oacPJDv4TS4.jpg';
   useEffect(() => {
@@ -30,7 +35,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={backLink}>Beck</Link>
+      <Link to={backLink || location?.state?.from || '/'}>Beck</Link>
       {movie && (
         <div>
           <img

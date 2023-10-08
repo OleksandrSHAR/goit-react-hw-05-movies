@@ -50,7 +50,9 @@ const Movies = () => {
       </form>
 
       <div>
-        <FilmWrap>{movies.length > 0 && <FilmList movie={movies} />}</FilmWrap>
+        <FilmWrap>
+          {movies.length > 0 && <FilmList movie={movies} movQuery={movQuery} />}
+        </FilmWrap>
       </div>
     </div>
   );
