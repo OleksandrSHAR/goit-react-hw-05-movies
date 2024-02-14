@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { getSearchMovie } from 'components/Api/Api';
 import { useSearchParams } from 'react-router-dom';
 import { FilmList } from 'Pages/FilmList/FilmList';
-import { FilmWrap } from './Movie.style';
+import { FilmWrap, Wrap, Input, Button, InputContainer } from './Movie.style';
 import toast from 'react-hot-toast';
+
 const Movies = () => {
   const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
@@ -34,19 +35,21 @@ const Movies = () => {
 
     setSearchParams({ query: e.target.elements.search.value });
 
-    console.log(e.target.elements.search.value);
+    setInput('');
   };
   return (
-    <div>
+    <Wrap>
       <form onSubmit={onSubmit}>
-        <input
-          onChange={onInput}
-          value={input}
-          name="search"
-          type="text"
-          placeholder="Search film name"
-        />
-        <button type="submit">Submit</button>
+        <InputContainer>
+          <Input
+            onChange={onInput}
+            value={input}
+            name="search"
+            type="text"
+            placeholder="Search film name"
+          />
+          <Button type="submit">Submit</Button>
+        </InputContainer>
       </form>
 
       <div>
@@ -54,7 +57,7 @@ const Movies = () => {
           {movies.length > 0 && <FilmList movie={movies} movQuery={movQuery} />}
         </FilmWrap>
       </div>
-    </div>
+    </Wrap>
   );
 };
 export default Movies;

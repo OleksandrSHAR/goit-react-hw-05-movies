@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const FilmItem = styled.li`
   display: flex;
+  width: 300px;
   flex-wrap: wrap;
   border: solid;
   :hover {
